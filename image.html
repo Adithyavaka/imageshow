@@ -1,0 +1,45 @@
+<html>
+<head>
+   <style>
+    /* Image Designing Propoerties */
+    /*.thumb {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+    }---*/
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $("#show").hover(function(){
+    $("#img").show();
+});
+
+    </script>
+<script>
+   function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();  //calls the function named previewFile()
+  </script>
+    </head>
+
+<body>
+    
+    <div><input id="show" type="file" onchange="previewFile()"></div>
+    <div>
+        <img id="img"src="" height="200" alt="Image preview..." style="display:"></div>
+    </body>
+</html>
